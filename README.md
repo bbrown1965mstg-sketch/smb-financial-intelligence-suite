@@ -1,3 +1,5 @@
+KAGGLE DATASET: https://www.kaggle.com/datasets/thebigduce/socal-fintech-capital-and-smb-financial-benchmarks/data
+
 # GLM-5.3 — SMB Financial Intelligence Suite
 
 Fractional-CFO-grade, local-first financial intelligence for small and
