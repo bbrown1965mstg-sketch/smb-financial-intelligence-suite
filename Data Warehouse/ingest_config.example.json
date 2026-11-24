@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "name": "QuickBooks accounting export (Nov 2026)",
+      "path": "samples/accounting_export.csv",
+      "target": "financial_ledger",
+      "delimiter": ",",
+      "encoding": "utf-8-sig",
+      "column_map": {
+        "Date":        {"column": "entry_date", "type": "date", "formats": ["%m/%d/%Y"], "required": true},
+        "Description": {"column": "description", "type": "text"},
+        "Amount":      {"column": "amount", "type": "money_signed", "entry_type_from_sign": true, "required": true},
+        "Category":    {"column": "category", "type": "text", "lower": true, "default": "other"}
+      },
+      "resolve": {
+        "job_id": {"table": "jobs", "match_column": "job_number",
+                   "from_csv": "Job", "on_missing": "skip_row"}
+      },
+      "dedup": {"mode": "exact"},
+      "refresh": true
+    },
+    {
+      "name": "Payroll timesheet export (Nov 2026)",
+      "path": "samples/payroll_export.csv",
+      "target": "labor_logs",
+      "delimiter": ",",
+      "encoding": "utf-8-sig",
+      "column_map": {
+        "Work Date":      {"column": "work_date", "type": "date", "formats": ["%m/%d/%Y"], "required": true},
+        "Hours":          {"column": "hours", "type": "hours", "required": true},
+        "Rate":           {"column": "hourly_rate", "type": "money", "required": true},
+        "Notes":          {"column": "description", "type": "text", "null_if": ["N/A"]}
+      },
+      "resolve": {
+        "employee_id": {"table": "employees", "match_column": "email",
+                        "from_csv": "Employee Email", "on_missing": "error"},
+        "job_id":      {"table": "jobs", "match_column": "job_number",
+                        "from_csv": "Job Number", "on_missing": "skip_row"}
+      },
+      "dedup": {"mode": "exact"},
+      "refresh": false
+    }
+  ]
+}

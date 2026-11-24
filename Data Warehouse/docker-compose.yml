@@ -1,0 +1,52 @@
+# SMB Financial & Operational Data Warehouse -- one-command stack.
+#
+#   docker compose up --build     -> dashboard on http://localhost:8602
+#
+# IMPORTANT (local-Mac users): Postgres is exposed on HOST PORT 5433, not 5432,
+# to avoid colliding with a Postgres already running on your machine (this
+# project's own local server occupies 5432). From the host connect with:
+#   postgresql://postgres:postgres@localhost:5433/smb_warehouse
+# Inside the compose network the app reaches the db as host `db`, port 5432.
+#
+# Data persists in the named volume `pgdata` across restarts; the entrypoint
+# seeds only when the warehouse is empty (idempotent bootstrap), and falls back
+# to the committed macro benchmark snapshot in samples/ when offline.
+# Boot order (docker/init_pipeline.py): schema.sql -> analytics_views.sql ->
+# funding_schema.sql -> peer_ratios_schema.sql (module schemas, applied on
+# every boot -- idempotent) -> seed -> snapshot -> optional online top-up ->
+# forecasts -> data-module export packs (exports/socal_funding_deals_v1 +
+# peer_financial_ratios_v1 CSVs are shipped; a missing pack = schema-only
+# module + "harvest required" log line).
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smb_warehouse
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"          # HOST 5433 -> container 5432 (5432 kept free for a local server)
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d smb_warehouse"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/smb_warehouse
+    ports:
+      - "8602:8602"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:

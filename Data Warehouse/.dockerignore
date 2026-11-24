@@ -1,0 +1,47 @@
+# Keep the Docker build context small and free of local state / secrets.
+# samples/ is deliberately KEPT -- docker/init_pipeline.py loads
+# samples/macro_benchmarks_snapshot.csv so the container works fully offline.
+#
+# The two DATA-MODULE export packs are kept as single CSV files so the
+# container can load their modules without re-harvesting (docker/init_pipeline.py
+# load_funding_pack / load_peer_pack; the Dockerfile COPYs exactly these two
+# files). Everything else under exports/ and the packs' parquet/docs stay out.
+
+# Local outputs & scratch
+exports/
+!exports/
+exports/*
+!exports/socal_funding_deals_v1/
+exports/socal_funding_deals_v1/*
+!exports/socal_funding_deals_v1/socal_capital_events.csv
+# SEC peer pack sits at the project ROOT (not under exports/): keep only its
+# loadable CSV in the build context.
+peer_financial_ratios_v1/*
+!peer_financial_ratios_v1/peer_financials.csv
+uploads/
+dashboard.log
+dashboard.log.*
+
+# Python runtime noise
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Secrets & env
+.env
+.env.*
+!.env.example
+
+# Git & OS noise
+.git/
+.gitignore
+.DS_Store
+
+# Local test files (the suite creates its own throwaway DBs; not needed in image)
+test_schema.py
+test_predictive.py
+test_nl_to_sql.py
+
+# Tooling caches
+.pytest_cache/

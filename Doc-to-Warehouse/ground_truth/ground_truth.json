@@ -1,0 +1,450 @@
+{
+  "generated_at": "2026-11-22T19:04:19Z",
+  "documents": [
+    {
+      "file": "bank_statement_pacific_trust.pdf",
+      "doc_type": "bank_statement",
+      "transactions": [
+        {
+          "date": "2026-03-02",
+          "vendor": "HARBORVIEW HOA",
+          "description": "Deposit - customer payment",
+          "amount": 8400.0,
+          "direction": "in",
+          "expected_category": "Revenue"
+        },
+        {
+          "date": "2026-03-02",
+          "vendor": "ABC Lumber Co.",
+          "description": "Check - ABC Lumber Co.",
+          "amount": 2315.4,
+          "direction": "out",
+          "expected_category": "Direct_Materials"
+        },
+        {
+          "date": "2026-03-02",
+          "vendor": "Sierra Building Supply",
+          "description": "ACH - Sierra Building Supply",
+          "amount": 1187.25,
+          "direction": "out",
+          "expected_category": "Direct_Materials"
+        },
+        {
+          "date": "2026-03-03",
+          "vendor": "Cedar Grove Estates",
+          "description": "Deposit - customer payment",
+          "amount": 6150.0,
+          "direction": "in",
+          "expected_category": "Revenue"
+        },
+        {
+          "date": "2026-03-03",
+          "vendor": "BrightWave Digital Advertising",
+          "description": "ACH - BrightWave Digital Advertising platform",
+          "amount": 425.0,
+          "direction": "out",
+          "expected_category": "Marketing"
+        },
+        {
+          "date": "2026-03-03",
+          "vendor": "Pacific Gas & Electric",
+          "description": "Wire - Pacific Gas & Electric",
+          "amount": 612.44,
+          "direction": "out",
+          "expected_category": "Overhead",
+          "expected_overhead_subtype": "utilities"
+        },
+        {
+          "date": "2026-03-04",
+          "vendor": "ABC Lumber Co.",
+          "description": "Check - ABC Lumber Co.",
+          "amount": 3980.12,
+          "direction": "out",
+          "expected_category": "Direct_Materials"
+        },
+        {
+          "date": "2026-03-04",
+          "vendor": "SureGuard Insurance Services",
+          "description": "ACH - SureGuard Insurance Services premium",
+          "amount": 1200.0,
+          "direction": "out",
+          "expected_category": "Overhead",
+          "expected_overhead_subtype": "insurance"
+        },
+        {
+          "date": "2026-03-05",
+          "vendor": "Ironclad Subcontractors LLC",
+          "description": "Check - Ironclad Subcontractors LLC",
+          "amount": 4750.0,
+          "direction": "out",
+          "expected_category": "Subcontractor"
+        },
+        {
+          "date": "2026-03-05",
+          "vendor": "Harborview HOA",
+          "description": "Deposit - customer payment",
+          "amount": 5230.0,
+          "direction": "in",
+          "expected_category": "Revenue"
+        },
+        {
+          "date": "2026-03-05",
+          "vendor": "Pacific Trust Bank",
+          "description": "Bank service charge - Pacific Trust Bank",
+          "amount": 45.0,
+          "direction": "out",
+          "expected_category": "Overhead",
+          "expected_overhead_subtype": "other"
+        },
+        {
+          "date": "2026-03-06",
+          "vendor": "Ironclad Subcontractors LLC",
+          "description": "Check - Ironclad Subcontractors LLC",
+          "amount": 3125.0,
+          "direction": "out",
+          "expected_category": "Subcontractor"
+        },
+        {
+          "date": "2026-03-06",
+          "vendor": "Hilti Tool Rental",
+          "description": "ACH - Hilti Tool Rental equipment",
+          "amount": 890.5,
+          "direction": "out",
+          "expected_category": "Overhead",
+          "expected_overhead_subtype": "equipment"
+        },
+        {
+          "date": "2026-03-06",
+          "vendor": "Cedar Grove Estates",
+          "description": "Deposit - customer payment",
+          "amount": 4120.75,
+          "direction": "in",
+          "expected_category": "Revenue"
+        },
+        {
+          "date": "2026-03-06",
+          "vendor": "Silver Creek Concrete Inc",
+          "description": "Check - Silver Creek Concrete Inc",
+          "amount": 1840.0,
+          "direction": "out",
+          "expected_category": "Direct_Materials"
+        }
+      ],
+      "expected_totals": {
+        "total_credits": 23900.75,
+        "total_debits": 20370.71,
+        "final_balance": 21780.04
+      }
+    },
+    {
+      "file": "invoice_abc_lumber.pdf",
+      "doc_type": "invoice",
+      "transactions": [
+        {
+          "date": "2026-03-04",
+          "vendor": "ABC Lumber Co.",
+          "invoice_number": "INV-1041",
+          "description": "Materials invoice INV-1041",
+          "amount": 823.66,
+          "direction": "out",
+          "line_items": [
+            {
+              "description": "2x6 Douglas Fir lumber, 8 ft (per stick)",
+              "qty": 12.0,
+              "unit_price": 14.75,
+              "amount": 177.0
+            },
+            {
+              "description": "Plywood sheathing 3/4 in, 4x8 sheet",
+              "qty": 5.0,
+              "unit_price": 89.5,
+              "amount": 447.5
+            },
+            {
+              "description": "Deck screws, 3 in stainless (box of 500)",
+              "qty": 3.0,
+              "unit_price": 42.8,
+              "amount": 128.4
+            },
+            {
+              "description": "Treated 4x4x10 post, ground contact rated pressure treated lumber, per each",
+              "qty": 1.0,
+              "unit_price": 9.75,
+              "amount": 9.75
+            }
+          ],
+          "expected_category": "Direct_Materials"
+        }
+      ],
+      "expected_totals": {
+        "subtotal": 762.65,
+        "tax": 61.01,
+        "total": 823.66
+      }
+    },
+    {
+      "file": "invoice_sierra_supply.pdf",
+      "doc_type": "invoice",
+      "transactions": [
+        {
+          "date": "2026-03-05",
+          "vendor": "Sierra Building Supply",
+          "invoice_number": "INV-2077",
+          "description": "Materials invoice INV-2077",
+          "amount": 707.83,
+          "direction": "out",
+          "line_items": [
+            {
+              "description": "Polymeric joint sand, 50 lb bag",
+              "qty": 40.0,
+              "unit_price": 8.25,
+              "amount": 330.0
+            },
+            {
+              "description": "Landscape fabric, 3 ft x 100 ft roll",
+              "qty": 6.0,
+              "unit_price": 34.6,
+              "amount": 207.6
+            },
+            {
+              "description": "Drainage basin, 12 in grate",
+              "qty": 2.0,
+              "unit_price": 58.9,
+              "amount": 117.8
+            }
+          ],
+          "expected_category": "Direct_Materials"
+        }
+      ],
+      "expected_totals": {
+        "subtotal": 655.4,
+        "tax": 52.43,
+        "total": 707.83
+      }
+    },
+    {
+      "file": "invoice_hilti_equipment.pdf",
+      "doc_type": "invoice",
+      "transactions": [
+        {
+          "date": "2026-03-06",
+          "vendor": "Hilti Equipment Rental",
+          "invoice_number": "INV-5532",
+          "description": "Equipment rental invoice INV-5532",
+          "amount": 1654.75,
+          "direction": "out",
+          "line_items": [
+            {
+              "description": "Mini skid steer rental, weekly rate",
+              "qty": 1.0,
+              "unit_price": 1450.0,
+              "amount": 1450.0
+            },
+            {
+              "description": "Concrete saw blade, 14 in",
+              "qty": 3.0,
+              "unit_price": 68.25,
+              "amount": 204.75
+            }
+          ],
+          "expected_category": "Overhead",
+          "expected_overhead_subtype": "equipment"
+        }
+      ],
+      "expected_totals": {
+        "subtotal": 1654.75,
+        "tax": 0.0,
+        "total": 1654.75
+      }
+    },
+    {
+      "file": "payroll_week_2026-03-02.pdf",
+      "doc_type": "payroll",
+      "transactions": [
+        {
+          "date": "2026-03-06",
+          "vendor": "Bristlecone Landscaping",
+          "description": "Weekly payroll 2026-03-02 to 2026-03-05",
+          "amount": 3218.25,
+          "direction": "out",
+          "line_items": [
+            {
+              "employee": "Maria Alvarez",
+              "work_date": "2026-03-02",
+              "hours": 8.0,
+              "rate": 24.5,
+              "amount": 196.0
+            },
+            {
+              "employee": "Maria Alvarez",
+              "work_date": "2026-03-03",
+              "hours": 8.0,
+              "rate": 24.5,
+              "amount": 196.0
+            },
+            {
+              "employee": "Maria Alvarez",
+              "work_date": "2026-03-04",
+              "hours": 7.5,
+              "rate": 24.5,
+              "amount": 183.75
+            },
+            {
+              "employee": "Maria Alvarez",
+              "work_date": "2026-03-05",
+              "hours": 8.0,
+              "rate": 24.5,
+              "amount": 196.0
+            },
+            {
+              "employee": "DeShawn Carter",
+              "work_date": "2026-03-02",
+              "hours": 8.0,
+              "rate": 28.0,
+              "amount": 224.0
+            },
+            {
+              "employee": "DeShawn Carter",
+              "work_date": "2026-03-03",
+              "hours": 9.0,
+              "rate": 28.0,
+              "amount": 252.0
+            },
+            {
+              "employee": "DeShawn Carter",
+              "work_date": "2026-03-04",
+              "hours": 8.0,
+              "rate": 28.0,
+              "amount": 224.0
+            },
+            {
+              "employee": "DeShawn Carter",
+              "work_date": "2026-03-05",
+              "hours": 8.0,
+              "rate": 28.0,
+              "amount": 224.0
+            },
+            {
+              "employee": "Tuyen Nguyen",
+              "work_date": "2026-03-02",
+              "hours": 8.0,
+              "rate": 22.75,
+              "amount": 182.0
+            },
+            {
+              "employee": "Tuyen Nguyen",
+              "work_date": "2026-03-03",
+              "hours": 8.0,
+              "rate": 22.75,
+              "amount": 182.0
+            },
+            {
+              "employee": "Tuyen Nguyen",
+              "work_date": "2026-03-04",
+              "hours": 8.0,
+              "rate": 22.75,
+              "amount": 182.0
+            },
+            {
+              "employee": "Tuyen Nguyen",
+              "work_date": "2026-03-05",
+              "hours": 6.0,
+              "rate": 22.75,
+              "amount": 136.5
+            },
+            {
+              "employee": "Rosa Delgado",
+              "work_date": "2026-03-02",
+              "hours": 8.0,
+              "rate": 26.25,
+              "amount": 210.0
+            },
+            {
+              "employee": "Rosa Delgado",
+              "work_date": "2026-03-03",
+              "hours": 8.0,
+              "rate": 26.25,
+              "amount": 210.0
+            },
+            {
+              "employee": "Rosa Delgado",
+              "work_date": "2026-03-04",
+              "hours": 8.0,
+              "rate": 26.25,
+              "amount": 210.0
+            },
+            {
+              "employee": "Rosa Delgado",
+              "work_date": "2026-03-05",
+              "hours": 8.0,
+              "rate": 26.25,
+              "amount": 210.0
+            }
+          ],
+          "expected_category": "Payroll"
+        }
+      ],
+      "expected_totals": {
+        "total_gross": 3218.25
+      }
+    },
+    {
+      "file": "invoice_abc_lumber_resend.pdf",
+      "doc_type": "invoice",
+      "transactions": [
+        {
+          "date": "2026-03-04",
+          "vendor": "ABC LUMBER SUPPLY INC",
+          "invoice_number": "INV-1041",
+          "description": "Materials invoice INV-1041",
+          "amount": 823.66,
+          "direction": "out",
+          "line_items": [
+            {
+              "description": "2x6 Douglas Fir lumber, 8 ft (per stick)",
+              "qty": 12.0,
+              "unit_price": 14.75,
+              "amount": 177.0
+            },
+            {
+              "description": "Plywood sheathing 3/4 in, 4x8 sheet",
+              "qty": 5.0,
+              "unit_price": 89.5,
+              "amount": 447.5
+            },
+            {
+              "description": "Deck screws, 3 in stainless (box of 500)",
+              "qty": 3.0,
+              "unit_price": 42.8,
+              "amount": 128.4
+            },
+            {
+              "description": "Treated 4x4x10 post, ground contact rated pressure treated lumber, per each",
+              "qty": 1.0,
+              "unit_price": 9.75,
+              "amount": 9.75
+            }
+          ],
+          "expected_category": "Direct_Materials"
+        }
+      ],
+      "expected_totals": {
+        "subtotal": 762.65,
+        "tax": 61.01,
+        "total": 823.66
+      }
+    }
+  ],
+  "expected_duplicates": [
+    {
+      "vendor_canonical": "abc lumber",
+      "invoice_number": "INV-1041"
+    }
+  ],
+  "vendor_alias_groups": [
+    [
+      "ABC Lumber Co.",
+      "ABC LUMBER SUPPLY INC"
+    ]
+  ]
+}

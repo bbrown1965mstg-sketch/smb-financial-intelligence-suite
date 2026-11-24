@@ -1,0 +1,43 @@
+# --- macOS ---
+.DS_Store
+.AppleDouble/
+
+# --- runtime state (never track: PIDs, logs, agent session state) ---
+.suite_run/
+*.pid
+*.log
+*.log.*
+
+# --- caches & virtualenvs ---
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
+.zcode/
+
+# --- secrets (never commit real credentials) ---
+.env
+.env.local
+!.env.example
+
+# --- the 1.1 GB harvest HTTP cache: keep on disk, never in git ---
+Data Warehouse/data_cache/
+
+# --- harvest cache & scratch ---
+Data Warehouse/.cache/
+Data Warehouse/_tmp_*
+Data Warehouse/_quarantine_*/
+Doc-to-Warehouse/output/
+
+# --- user data (PDFs / uploads / generated reports) ---
+Data Warehouse/uploads/
+SMB-Watchdog/reports/
+**/sample_data/
+**/uploads/
+!Doc-to-Warehouse/sample_pdfs/
+
+# --- database backups ---
+backups/
+*.dump

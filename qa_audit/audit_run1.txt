@@ -1,0 +1,244 @@
+[PASS] 1a role nl2sql_reader exists
+[PASS] 1b rolsuper = false  -- rolsuper=False
+[PASS] 1c rolbypassrls = false  -- =False
+[PASS] 1d rolcanlogin = true  -- =True
+[PASS] 1e NOCREATEDB/NOCREATEROLE/NOINHERIT/NOREPLICATION  -- createdb=False createrole=False inherit=False repl=False
+[PASS] 2a relrowsecurity on customers  -- =True
+[PASS] 2a relrowsecurity on job_types  -- =True
+[PASS] 2a relrowsecurity on employees  -- =True
+[PASS] 2a relrowsecurity on jobs  -- =True
+[PASS] 2a relrowsecurity on financial_ledger  -- =True
+[PASS] 2a relrowsecurity on labor_logs  -- =True
+[PASS] 2a relrowsecurity on anomaly_alerts  -- =True
+[PASS] 2a relrowsecurity on forecasts  -- =True
+[PASS] 2a relrowsecurity on companies  -- =True
+[PASS] 2b exactly 9 policies in pg_policy  -- count=9
+[PASS] 2c policy tenant_isolation_anomaly_alerts on anomaly_alerts (cmd *)  -- rel=anomaly_alerts
+[PASS] 2d tenant_isolation_anomaly_alerts USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_anomaly_alerts WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_companies on companies (cmd *)  -- rel=companies
+[PASS] 2d tenant_isolation_companies USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_companies WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_customers on customers (cmd *)  -- rel=customers
+[PASS] 2d tenant_isolation_customers USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_customers WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_employees on employees (cmd *)  -- rel=employees
+[PASS] 2d tenant_isolation_employees USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_employees WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_financial_ledger on financial_ledger (cmd *)  -- rel=financial_ledger
+[PASS] 2d tenant_isolation_financial_ledger USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_financial_ledger WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_forecasts on forecasts (cmd *)  -- rel=forecasts
+[PASS] 2d tenant_isolation_forecasts USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_forecasts WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_job_types on job_types (cmd *)  -- rel=job_types
+[PASS] 2d tenant_isolation_job_types USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_job_types WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_jobs on jobs (cmd *)  -- rel=jobs
+[PASS] 2d tenant_isolation_jobs USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_jobs WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2c policy tenant_isolation_labor_logs on labor_logs (cmd *)  -- rel=labor_logs
+[PASS] 2d tenant_isolation_labor_logs USING is fail-closed GUC predicate  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2e tenant_isolation_labor_logs WITH CHECK present & identical to USING  -- (company_id = (NULLIF(current_setting('app.current_company_id'::text, true), ''::text))::bigint)
+[PASS] 2f no policy on any relation outside the 9  -- []
+
+--- grant matrix (SELECT) ---
+[PASS] 3a SELECT TRUE  customers
+[PASS] 3a SELECT TRUE  job_types
+[PASS] 3a SELECT TRUE  employees
+[PASS] 3a SELECT TRUE  jobs
+[PASS] 3a SELECT TRUE  financial_ledger
+[PASS] 3a SELECT TRUE  labor_logs
+[PASS] 3a SELECT TRUE  anomaly_alerts
+[PASS] 3a SELECT TRUE  forecasts
+[PASS] 3a SELECT TRUE  companies
+[PASS] 3a SELECT TRUE  market_benchmarks
+[PASS] 3a SELECT TRUE  backtest_results
+[PASS] 3a SELECT TRUE  mv_socal_rate_guidance
+[PASS] 3a SELECT TRUE  mv_vertical_financial_quartiles
+[PASS] 3a SELECT TRUE  regional_industry_profiles
+[PASS] 3a SELECT TRUE  socal_wage_benchmarks
+[PASS] 3a SELECT TRUE  socal_macro_indicators
+[PASS] 3a SELECT TRUE  socal_business_patterns
+[PASS] 3a SELECT TRUE  socal_loan_activity
+[PASS] 3a SELECT TRUE  socal_harvest_log
+[PASS] 3a SELECT TRUE  socal_capital_events
+[PASS] 3a SELECT TRUE  socal_county_capital_summary
+[PASS] 3a SELECT TRUE  public_peer_financials
+[PASS] 3a SELECT TRUE  scoped_monthly_summary
+[PASS] 3a SELECT TRUE  scoped_customer_profitability
+[PASS] 3a SELECT TRUE  scoped_job_type_profitability
+[PASS] 3a SELECT TRUE  scoped_labor_cost_analysis
+[PASS] 3a SELECT TRUE  scoped_benchmark_comparison
+[PASS] 3b SELECT FALSE mv_monthly_summary (raw matview denied)
+[PASS] 3b SELECT FALSE mv_customer_profitability (raw matview denied)
+[PASS] 3b SELECT FALSE mv_job_type_profitability (raw matview denied)
+[PASS] 3b SELECT FALSE mv_labor_cost_analysis (raw matview denied)
+[PASS] 3b SELECT FALSE mv_benchmark_comparison (raw matview denied)
+--- negative privileges (write/DDL) ---
+[PASS] 3c INSERT FALSE on customers
+[PASS] 3c UPDATE FALSE on customers
+[PASS] 3c DELETE FALSE on customers
+[PASS] 3c TRUNCATE FALSE on customers
+[PASS] 3c REFERENCES FALSE on customers
+[PASS] 3c TRIGGER FALSE on customers
+[PASS] 3c INSERT FALSE on job_types
+[PASS] 3c UPDATE FALSE on job_types
+[PASS] 3c DELETE FALSE on job_types
+[PASS] 3c TRUNCATE FALSE on job_types
+[PASS] 3c REFERENCES FALSE on job_types
+[PASS] 3c TRIGGER FALSE on job_types
+[PASS] 3c INSERT FALSE on employees
+[PASS] 3c UPDATE FALSE on employees
+[PASS] 3c DELETE FALSE on employees
+[PASS] 3c TRUNCATE FALSE on employees
+[PASS] 3c REFERENCES FALSE on employees
+[PASS] 3c TRIGGER FALSE on employees
+[PASS] 3c INSERT FALSE on jobs
+[PASS] 3c UPDATE FALSE on jobs
+[PASS] 3c DELETE FALSE on jobs
+[PASS] 3c TRUNCATE FALSE on jobs
+[PASS] 3c REFERENCES FALSE on jobs
+[PASS] 3c TRIGGER FALSE on jobs
+[PASS] 3c INSERT FALSE on financial_ledger
+[PASS] 3c UPDATE FALSE on financial_ledger
+[PASS] 3c DELETE FALSE on financial_ledger
+[PASS] 3c TRUNCATE FALSE on financial_ledger
+[PASS] 3c REFERENCES FALSE on financial_ledger
+[PASS] 3c TRIGGER FALSE on financial_ledger
+[PASS] 3c INSERT FALSE on labor_logs
+[PASS] 3c UPDATE FALSE on labor_logs
+[PASS] 3c DELETE FALSE on labor_logs
+[PASS] 3c TRUNCATE FALSE on labor_logs
+[PASS] 3c REFERENCES FALSE on labor_logs
+[PASS] 3c TRIGGER FALSE on labor_logs
+[PASS] 3c INSERT FALSE on anomaly_alerts
+[PASS] 3c UPDATE FALSE on anomaly_alerts
+[PASS] 3c DELETE FALSE on anomaly_alerts
+[PASS] 3c TRUNCATE FALSE on anomaly_alerts
+[PASS] 3c REFERENCES FALSE on anomaly_alerts
+[PASS] 3c TRIGGER FALSE on anomaly_alerts
+[PASS] 3c INSERT FALSE on forecasts
+[PASS] 3c UPDATE FALSE on forecasts
+[PASS] 3c DELETE FALSE on forecasts
+[PASS] 3c TRUNCATE FALSE on forecasts
+[PASS] 3c REFERENCES FALSE on forecasts
+[PASS] 3c TRIGGER FALSE on forecasts
+[PASS] 3c INSERT FALSE on companies
+[PASS] 3c UPDATE FALSE on companies
+[PASS] 3c DELETE FALSE on companies
+[PASS] 3c TRUNCATE FALSE on companies
+[PASS] 3c REFERENCES FALSE on companies
+[PASS] 3c TRIGGER FALSE on companies
+[PASS] 3c INSERT FALSE on scoped_monthly_summary
+[PASS] 3c UPDATE FALSE on scoped_monthly_summary
+[PASS] 3c DELETE FALSE on scoped_monthly_summary
+[PASS] 3c TRUNCATE FALSE on scoped_monthly_summary
+[PASS] 3c REFERENCES FALSE on scoped_monthly_summary
+[PASS] 3c TRIGGER FALSE on scoped_monthly_summary
+[PASS] 3c INSERT FALSE on scoped_customer_profitability
+[PASS] 3c UPDATE FALSE on scoped_customer_profitability
+[PASS] 3c DELETE FALSE on scoped_customer_profitability
+[PASS] 3c TRUNCATE FALSE on scoped_customer_profitability
+[PASS] 3c REFERENCES FALSE on scoped_customer_profitability
+[PASS] 3c TRIGGER FALSE on scoped_customer_profitability
+[PASS] 3c INSERT FALSE on scoped_job_type_profitability
+[PASS] 3c UPDATE FALSE on scoped_job_type_profitability
+[PASS] 3c DELETE FALSE on scoped_job_type_profitability
+[PASS] 3c TRUNCATE FALSE on scoped_job_type_profitability
+[PASS] 3c REFERENCES FALSE on scoped_job_type_profitability
+[PASS] 3c TRIGGER FALSE on scoped_job_type_profitability
+[PASS] 3c INSERT FALSE on scoped_labor_cost_analysis
+[PASS] 3c UPDATE FALSE on scoped_labor_cost_analysis
+[PASS] 3c DELETE FALSE on scoped_labor_cost_analysis
+[PASS] 3c TRUNCATE FALSE on scoped_labor_cost_analysis
+[PASS] 3c REFERENCES FALSE on scoped_labor_cost_analysis
+[PASS] 3c TRIGGER FALSE on scoped_labor_cost_analysis
+[PASS] 3c INSERT FALSE on scoped_benchmark_comparison
+[PASS] 3c UPDATE FALSE on scoped_benchmark_comparison
+[PASS] 3c DELETE FALSE on scoped_benchmark_comparison
+[PASS] 3c TRUNCATE FALSE on scoped_benchmark_comparison
+[PASS] 3c REFERENCES FALSE on scoped_benchmark_comparison
+[PASS] 3c TRIGGER FALSE on scoped_benchmark_comparison
+[PASS] 3c INSERT FALSE on mv_monthly_summary
+[PASS] 3c UPDATE FALSE on mv_monthly_summary
+[PASS] 3c DELETE FALSE on mv_monthly_summary
+[PASS] 3c TRUNCATE FALSE on mv_monthly_summary
+[PASS] 3c REFERENCES FALSE on mv_monthly_summary
+[PASS] 3c TRIGGER FALSE on mv_monthly_summary
+[PASS] 3c INSERT FALSE on mv_customer_profitability
+[PASS] 3c UPDATE FALSE on mv_customer_profitability
+[PASS] 3c DELETE FALSE on mv_customer_profitability
+[PASS] 3c TRUNCATE FALSE on mv_customer_profitability
+[PASS] 3c REFERENCES FALSE on mv_customer_profitability
+[PASS] 3c TRIGGER FALSE on mv_customer_profitability
+[PASS] 3c INSERT FALSE on mv_job_type_profitability
+[PASS] 3c UPDATE FALSE on mv_job_type_profitability
+[PASS] 3c DELETE FALSE on mv_job_type_profitability
+[PASS] 3c TRUNCATE FALSE on mv_job_type_profitability
+[PASS] 3c REFERENCES FALSE on mv_job_type_profitability
+[PASS] 3c TRIGGER FALSE on mv_job_type_profitability
+[PASS] 3c INSERT FALSE on mv_labor_cost_analysis
+[PASS] 3c UPDATE FALSE on mv_labor_cost_analysis
+[PASS] 3c DELETE FALSE on mv_labor_cost_analysis
+[PASS] 3c TRUNCATE FALSE on mv_labor_cost_analysis
+[PASS] 3c REFERENCES FALSE on mv_labor_cost_analysis
+[PASS] 3c TRIGGER FALSE on mv_labor_cost_analysis
+[PASS] 3c INSERT FALSE on mv_benchmark_comparison
+[PASS] 3c UPDATE FALSE on mv_benchmark_comparison
+[PASS] 3c DELETE FALSE on mv_benchmark_comparison
+[PASS] 3c TRUNCATE FALSE on mv_benchmark_comparison
+[PASS] 3c REFERENCES FALSE on mv_benchmark_comparison
+[PASS] 3c TRIGGER FALSE on mv_benchmark_comparison
+[PASS] 3d CREATE on schema public denied
+[PASS] 3e CREATE on database denied
+[PASS] 3f role holds ONLY SELECT grants on the allowlisted relations  -- []
+    (total grants held: 24)
+[PASS] 4a scoped view scoped_monthly_summary exists
+[PASS] 4a scoped view scoped_customer_profitability exists
+[PASS] 4a scoped view scoped_job_type_profitability exists
+[PASS] 4a scoped view scoped_labor_cost_analysis exists
+[PASS] 4a scoped view scoped_benchmark_comparison exists
+[PASS] 4b security_barrier=true on scoped_benchmark_comparison  -- ['security_barrier=true']
+[PASS] 4b security_barrier=true on scoped_customer_profitability  -- ['security_barrier=true']
+[PASS] 4b security_barrier=true on scoped_job_type_profitability  -- ['security_barrier=true']
+[PASS] 4b security_barrier=true on scoped_labor_cost_analysis  -- ['security_barrier=true']
+[PASS] 4b security_barrier=true on scoped_monthly_summary  -- ['security_barrier=true']
+[PASS] 4c viewdef of scoped_benchmark_comparison carries the GUC predicate
+[PASS] 4c viewdef of scoped_customer_profitability carries the GUC predicate
+[PASS] 4c viewdef of scoped_job_type_profitability carries the GUC predicate
+[PASS] 4c viewdef of scoped_labor_cost_analysis carries the GUC predicate
+[PASS] 4c viewdef of scoped_monthly_summary carries the GUC predicate
+[PASS] 4d migrations/002 defines scoped_monthly_summary
+[PASS] 4e analytics_views.sql defines scoped_monthly_summary
+[PASS] 4f NO drift between 002 and analytics_views for scoped_monthly_summary
+[PASS] 4h scoped_monthly_summary: LIVE definition uses the exact fail-closed idiom  -- gross_margin_pct, job_completions, new_customers from mv_monthly_summary where company_id = nullif(current_setting('app.current_company_id', true), '')::bigint;
+[PASS] 4g scoped_monthly_summary: file definition uses the exact fail-closed idiom
+[PASS] 4d migrations/002 defines scoped_customer_profitability
+[PASS] 4e analytics_views.sql defines scoped_customer_profitability
+[PASS] 4f NO drift between 002 and analytics_views for scoped_customer_profitability
+[PASS] 4h scoped_customer_profitability: LIVE definition uses the exact fail-closed idiom  -- t_job_date, days_since_last_job, is_whale from mv_customer_profitability where company_id = nullif(current_setting('app.current_company_id', true), '')::bigint;
+[PASS] 4g scoped_customer_profitability: file definition uses the exact fail-closed idiom
+[PASS] 4d migrations/002 defines scoped_job_type_profitability
+[PASS] 4e analytics_views.sql defines scoped_job_type_profitability
+[PASS] 4f NO drift between 002 and analytics_views for scoped_job_type_profitability
+[PASS] 4h scoped_job_type_profitability: LIVE definition uses the exact fail-closed idiom  -- rk_avg_margin_pct, price_vs_benchmark_pct from mv_job_type_profitability where company_id = nullif(current_setting('app.current_company_id', true), '')::bigint;
+[PASS] 4g scoped_job_type_profitability: file definition uses the exact fail-closed idiom
+[PASS] 4d migrations/002 defines scoped_labor_cost_analysis
+[PASS] 4e analytics_views.sql defines scoped_labor_cost_analysis
+[PASS] 4f NO drift between 002 and analytics_views for scoped_labor_cost_analysis
+[PASS] 4h scoped_labor_cost_analysis: LIVE definition uses the exact fail-closed idiom  -- loyee_count, first_work_date, last_work_date from mv_labor_cost_analysis where company_id = nullif(current_setting('app.current_company_id', true), '')::bigint;
+[PASS] 4g scoped_labor_cost_analysis: file definition uses the exact fail-closed idiom
+[PASS] 4d migrations/002 defines scoped_benchmark_comparison
+[PASS] 4e analytics_views.sql defines scoped_benchmark_comparison
+[PASS] 4f NO drift between 002 and analytics_views for scoped_benchmark_comparison
+[PASS] 4h scoped_benchmark_comparison: LIVE definition uses the exact fail-closed idiom  -- p_regional_pct, materials_inflation_gap_pct from mv_benchmark_comparison where company_id = nullif(current_setting('app.current_company_id', true), '')::bigint;
+[PASS] 4g scoped_benchmark_comparison: file definition uses the exact fail-closed idiom
+[PASS] 4i scoped_monthly_summary reads FROM mv_monthly_summary (live + files)  -- m mv_monthly_summary where company_id = nullif(current_setting('app.current_company_id'::text, true), ''::text)::bigint;
+[PASS] 4i scoped_customer_profitability reads FROM mv_customer_profitability (live + files)  -- stomer_profitability where company_id = nullif(current_setting('app.current_company_id'::text, true), ''::text)::bigint;
+[PASS] 4i scoped_job_type_profitability reads FROM mv_job_type_profitability (live + files)  -- b_type_profitability where company_id = nullif(current_setting('app.current_company_id'::text, true), ''::text)::bigint;
+[PASS] 4i scoped_labor_cost_analysis reads FROM mv_labor_cost_analysis (live + files)  -- _labor_cost_analysis where company_id = nullif(current_setting('app.current_company_id'::text, true), ''::text)::bigint;
+[PASS] 4i scoped_benchmark_comparison reads FROM mv_benchmark_comparison (live + files)  -- benchmark_comparison where company_id = nullif(current_setting('app.current_company_id'::text, true), ''::text)::bigint;
+
+========================================================================
+CATALOG AUDIT: ALL CHECKS PASSED

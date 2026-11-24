@@ -1,0 +1,19 @@
+# Local secrets -- never commit
+.env
+.env.*
+!.env.example
+
+# Python runtime noise
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated local outputs
+exports/
+uploads/
+.cache/
+dashboard.log
+dashboard.log.*
+
+# OS noise
+.DS_Store

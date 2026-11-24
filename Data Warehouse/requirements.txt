@@ -1,0 +1,18 @@
+# SMB Financial & Operational Data Warehouse -- Python dependencies.
+#
+# Target image: python:3.11-slim. NO apt packages are required: schema.sql and
+# analytics_views.sql are applied via psycopg2 (see docker/init_pipeline.py),
+# not the psql CLI, so no postgresql-client install is needed.
+psycopg2-binary>=2.9
+streamlit>=1.40
+plotly>=5.20
+pandas>=2.0
+pyarrow>=14.0
+requests>=2.31
+# Executive PDF Brief (generate_pdf_brief.py): reportlab platypus only, no
+# chart images. reportlab 5.x needs Python 3.10+; the <5 pin keeps Python 3.9
+# hosts working (4.x is the line bundled with most distros).
+reportlab>=4.0,<5
+# Test-only: PDF text extraction for the Executive Brief QA checks
+# (python3 -m pip install --user pypdf). Safe to omit at runtime.
+pypdf>=4.0

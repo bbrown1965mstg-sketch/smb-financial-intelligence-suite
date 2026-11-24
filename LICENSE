@@ -1,0 +1,43 @@
+MIT License
+
+Copyright (c) 2026 bbrown1965mstg-sketch
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+DATA LICENSE NOTE
+=================
+
+The MIT grant above covers the CODE in this repository only.
+
+The four published benchmark dataset packs are licensed separately under
+Creative Commons Attribution 4.0 International (CC-BY-4.0),
+https://creativecommons.org/licenses/by/4.0/:
+
+  - Data Warehouse/exports/smb_benchmark_pack_v1/     (synthetic demo data)
+  - Data Warehouse/exports/socal_fintech_benchmark_pack_v2/
+  - Data Warehouse/exports/socal_funding_deals_v1/
+  - Data Warehouse/peer_financial_ratios_v1/
+
+The underlying public data remains the property of its respective sources
+(U.S. Census Bureau, U.S. Bureau of Labor Statistics, Federal Reserve
+Economic Data, U.S. Small Business Administration, U.S. Securities and
+Exchange Commission) and is redistributed here under each source's terms
+with attribution preserved in every pack's data dictionary and MANIFEST.
